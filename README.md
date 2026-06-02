@@ -6,13 +6,13 @@
 
   <p class="projectBadges">
     <img src="https://johng.io/badges/category/Extension.svg" alt="Project category" title="Project category"/>
-    <img src="https://img.shields.io/github/languages/top/twocaretcat/Tally-Extension.svg" alt="Language" title="Language"/>
+    <img src="https://img.shields.io/github/languages/top/caret-collective/Tally-Extension.svg" alt="Language" title="Language"/>
     <a href="https://chrome.google.com/webstore/detail/tally-word-counter/eggkmbghbmjmbdjloifaklghfiecjbnk">
       <img src="https://img.shields.io/chrome-web-store/v/eggkmbghbmjmbdjloifaklghfiecjbnk.svg" alt="View on the Chrome Web Store" title="View on the Chrome Web Store"/>
     </a>
-    <img src="https://img.shields.io/github/repo-size/twocaretcat/Tally-Extension.svg" alt="Repository size" title="Repository size"/>
+    <img src="https://img.shields.io/github/repo-size/caret-collective/Tally-Extension.svg" alt="Repository size" title="Repository size"/>
     <a href="LICENSE">
-      <img src="https://img.shields.io/github/license/twocaretcat/Tally-Extension.svg" alt="Project license" title="Project license"/>
+      <img src="https://img.shields.io/github/license/caret-collective/Tally-Extension.svg" alt="Project license" title="Project license"/>
     </a>
   </p>
 
