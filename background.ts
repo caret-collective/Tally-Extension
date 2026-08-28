@@ -100,7 +100,13 @@ function count(info: chrome.contextMenus.OnClickData): void {
 	}
 
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0]!.id!, count);
+		const tabId = tabs[0]?.id;
+
+		if (tabId === undefined) {
+			return;
+		}
+
+		chrome.tabs.sendMessage(tabId, count);
 	});
 }
 
