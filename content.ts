@@ -56,7 +56,7 @@ table.className = 'twocaretcat-Tally-modal-table';
 modal.appendChild(table);
 
 button.appendChild(document.createTextNode('CLOSE'));
-button.setAttribute('onclick', '(function() {document.getElementsByClassName("twocaretcat-Tally-modal")[0].classList.remove("twocaretcat-Tally-modal-open")}())');
+button.addEventListener('click', () => modal.classList.remove('twocaretcat-Tally-modal-open'));
 
 modal.appendChild(button);
 
