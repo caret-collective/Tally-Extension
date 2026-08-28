@@ -1,0 +1,56 @@
+{
+	"name": "tally-extension",
+	"version": "1.1.0",
+	"description": "Easily count the number of words, characters, and paragraphs on any site.",
+	"keywords": [
+		"browser-extension",
+		"chrome-extension",
+		"character-counter",
+		"paragraph-counter",
+		"text-analysis",
+		"word-counter"
+	],
+	"homepage": "https://github.com/caret-collective/Tally-Extension",
+	"bugs": {
+		"url": "https://github.com/caret-collective/Tally-Extension/issues"
+	},
+	"license": "MPL-2.0",
+	"author": {
+		"name": "John Goodliff",
+		"url": "https://johng.io"
+	},
+	"funding": [
+		{
+			"type": "individual",
+			"url": "https://johng.io/funding"
+		},
+		{
+			"type": "GitHub Sponsors",
+			"url": "https://github.com/sponsors/twocaretcat"
+		},
+		{
+			"type": "Patreon",
+			"url": "https://patreon.com/twocaretcat"
+		},
+		{
+			"type": "Brave Creators",
+			"url": "https://publishers.basicattentiontoken.org/en/c/johng"
+		}
+	],
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/caret-collective/Tally-Extension.git"
+	},
+	"scripts": {
+		"build": "bun run clean && bun run build:copy && bun run build:css && bun run build:zip",
+		"build:copy": "mkdir -p build && cp README.md LICENSE manifest.json 128.png 48.png 32.png 16.png background.js content.js build/",
+		"build:css": "sass style.scss build/style.css --style=compressed --no-source-map",
+		"build:zip": "cd build && bestzip tally-word-counter.zip README.md LICENSE manifest.json 128.png 48.png 32.png 16.png background.js content.js style.css",
+		"clean": "rm -rf build"
+	},
+	"devDependencies": {
+		"bestzip": "^3.0.2",
+		"sass": "^1.103.1"
+	}
+}
