@@ -67,6 +67,6 @@ chrome.runtime.onMessage.addListener(function(request: CountResult) {
 	modal.classList.add('twocaretcat-Tally-modal-open');
 
 	for (let i = 0; i < 8; i++) {
-		document.getElementById(ids[i])!.innerHTML = String(request[ids[i]]);
+		document.getElementById(ids[i])!.textContent = String(request[ids[i]]);
 	}
 });
