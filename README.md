@@ -1,6 +1,6 @@
 <!-- Project Header -->
 <div align="center">
-  <img class="projectLogo" src="icon_large.png" alt="Project logo" title="Project logo" width="256">
+  <img class="projectLogo" src="docs/icon_large.png" alt="Project logo" title="Project logo" width="256">
 
   <h1 class="projectName">Tally</h1>
 
@@ -29,8 +29,8 @@
 ### Screenshots
 Desktop site | &#8291;
 :-:|:-:
-![Screenshot 1](screenshots/ss0.png) | ![Screenshot 2](screenshots/ss1.png)
-![Screenshot 3](screenshots/ss2.png) | ![Screenshot 4](screenshots/ss3.png)
+![Screenshot 1](docs/screenshots/ss0.png) | ![Screenshot 2](docs/screenshots/ss1.png)
+![Screenshot 3](docs/screenshots/ss2.png) | ![Screenshot 4](docs/screenshots/ss3.png)
 
 
 ## 📦 Installation
