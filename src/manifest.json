@@ -4,25 +4,24 @@
 	"description": "Easily count the number of words, characters, and paragraphs on any site. Right click on any selected text and click Count.",
 	"version": "1.1",
 	"icons": {
-		"128": "128.png",
-		"48": "48.png",
-		"32": "32.png",
-		"16": "16.png"
+		"128": "assets/128.png",
+		"48": "assets/48.png",
+		"32": "assets/32.png",
+		"16": "assets/16.png"
 	},
 	"permissions": [
 		"contextMenus",
 		"activeTab"
-	 ],
+	],
 	"background": {
-		"scripts": ["background.js"],
-		"persistent": false
+		"service_worker": "background.js"
 	},
 	"content_scripts": [
-    {
-      "matches": ["*://*/*"],
-      "js": ["content.js"],
+		{
+			"matches": ["*://*/*"],
+			"js": ["content.js"],
 			"css": ["style.css"]
-    }
-  ],
-	"manifest_version": 2
+		}
+	],
+	"manifest_version": 3
 }

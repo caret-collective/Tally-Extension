@@ -1,6 +1,6 @@
 <!-- Project Header -->
 <div align="center">
-  <img class="projectLogo" src="icon_large.png" alt="Project logo" title="Project logo" width="256">
+  <img class="projectLogo" src="docs/icon_large.png" alt="Project logo" title="Project logo" width="256">
 
   <h1 class="projectName">Tally</h1>
 
@@ -29,14 +29,14 @@
 ### Screenshots
 Desktop site | &#8291;
 :-:|:-:
-![Screenshot 1](screenshots/ss0.png) | ![Screenshot 2](screenshots/ss1.png)
-![Screenshot 3](screenshots/ss2.png) | ![Screenshot 4](screenshots/ss3.png)
+![Screenshot 1](docs/screenshots/ss0.png) | ![Screenshot 2](docs/screenshots/ss1.png)
+![Screenshot 3](docs/screenshots/ss2.png) | ![Screenshot 4](docs/screenshots/ss3.png)
 
 
 ## 📦 Installation
 The extension can be installed from the Chrome Web Store [here][1].
 
-If you wish to build yourself, `build.sh` is used to copy all files to the `build/` directory, compile css, and zip the extension. You can do this any other way you wish. [SASS](https://sass-lang.com/) is used for CSS compilation. After running `build.sh`, the build directory can be loaded into Chrome.
+If you wish to build yourself, run `bun install` and then `bun run build`. The build copies extension files to the `build/` directory, compiles CSS, and creates `build/tally-word-counter.zip`. After running the build, the `build/` directory can be loaded into Chrome.
 
 
 ## 🕹️ Usage
