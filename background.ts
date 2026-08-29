@@ -99,7 +99,7 @@ function count(info: chrome.contextMenus.OnClickData): void {
 		count.paragraphs++;
 	}
 
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+	chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
 		const tabId = tabs[0]?.id;
 
 		if (tabId === undefined) {
@@ -110,13 +110,15 @@ function count(info: chrome.contextMenus.OnClickData): void {
 	});
 }
 
-chrome.contextMenus.create({
-	id: 'twocaretcat-Tally-count',
-	title: 'Tally Word Counter: Count',
-	contexts: ['selection']
+chrome.runtime.onInstalled.addListener(() => {
+	chrome.contextMenus.create({
+		id: 'twocaretcat-Tally-count',
+		title: 'Tally Word Counter: Count',
+		contexts: ['selection']
+	});
 });
 
-chrome.contextMenus.onClicked.addListener(function(info) {
+chrome.contextMenus.onClicked.addListener((info) => {
 	if (info.menuItemId == 'twocaretcat-Tally-count') {
 		count(info);
 	}

@@ -12,17 +12,16 @@
 	"permissions": [
 		"contextMenus",
 		"activeTab"
-	 ],
+	],
 	"background": {
-		"scripts": ["background.js"],
-		"persistent": false
+		"service_worker": "background.js"
 	},
 	"content_scripts": [
-    {
-      "matches": ["*://*/*"],
-      "js": ["content.js"],
+		{
+			"matches": ["*://*/*"],
+			"js": ["content.js"],
 			"css": ["style.css"]
-    }
-  ],
-	"manifest_version": 2
+		}
+	],
+	"manifest_version": 3
 }
