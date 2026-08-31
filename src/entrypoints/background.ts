@@ -1,112 +1,30 @@
+import { Tally } from '@twocaretcat/tally-ts';
 import { defineBackground } from 'wxt/utils/define-background';
 import { browser, type Browser } from 'wxt/browser';
+import type { CountResult } from '../constants';
 
-type CountResult = {
-	characters: number;
-	words: number;
-	sentences: number;
-	paragraphs: number;
-	spaces: number;
-	letters: number;
-	digits: number;
-	specialcharacters: number;
-};
+const tally = new Tally({locales: browser.i18n.getUILanguage()});
 
 async function count(info: Browser.contextMenus.OnClickData, tab: Browser.tabs.Tab | undefined): Promise<void> {
-	const text = info.selectionText!;
-	const len = text.length;
-
-	let wordflag = false;
-	let sentflag = false;
-	let paraflag = false;
-
-	const count: CountResult = {
-		characters: 0,
-		words: 0,
-		sentences: 0,
-		paragraphs: 0,
-		spaces: 0,
-		letters: 0,
-		digits: 0,
-		specialcharacters: 0
-	};
-
-	for (let i = 0; i < len; i++) {
-		const current = text[i]!;
-
-		count.characters++;
-
-		if (/\d/.test(current)) {
-			wordflag = true;
-			sentflag = true;
-			paraflag = true;
-			count.digits++;
-		}
-		else if (/\w/.test(current)) {
-			wordflag = true;
-			sentflag = true;
-			paraflag = true;
-			count.letters++;
-		}
-		else {
-			if (/ /.test(current)) {
-				count.spaces++;
-
-				if (wordflag) {
-					wordflag = false;
-					count.words++;
-				}
-			}
-			else if (/[\.\?\!]/.test(current)) {
-				if (wordflag) {
-					wordflag = false;
-					count.words++;
-				}
-
-				if (sentflag) {
-					sentflag = false;
-					count.sentences++;
-				}
-			}
-			else if (/\n/.test(current)) {
-				if (wordflag) {
-					wordflag = false;
-					count.words++;
-				}
-
-				if (sentflag) {
-					sentflag = false;
-					count.sentences++;
-				}
-
-				if (paraflag) {
-					paraflag = false;
-					count.paragraphs++;
-				}
-			}
-			else {
-				count.specialcharacters++;
-			}
-		}
-	}
-
-	if (wordflag) {
-		count.words++;
-	}
-
-	if (sentflag) {
-		count.sentences++;
-	}
-
-	if (paraflag) {
-		count.paragraphs++;
-	}
-
-	if (tab?.id === undefined) {
+	if (!info.selectionText || tab?.id === undefined) {
 		return;
 	}
 
-	await browser.tabs.sendMessage(tab.id, count).catch(() => undefined);
+	const counts = tally.countAll(info.selectionText);
+	const message: CountResult = {
+		characters: counts.graphemes.total,
+		words: counts.words.total,
+		sentences: counts.sentences.total,
+		paragraphs: counts.paragraphs.total,
+		lines: counts.lines.total,
+		spaces: counts.graphemes.by.spaces.total,
+		letters: counts.graphemes.by.letters.total,
+		digits: counts.graphemes.by.digits.total,
+		punctuation: counts.graphemes.by.punctuation.total,
+		symbols: counts.graphemes.by.symbols.total
+	};
+
+	await browser.tabs.sendMessage(tab.id, message).catch(() => undefined);
 }
 
 export default defineBackground(() => {

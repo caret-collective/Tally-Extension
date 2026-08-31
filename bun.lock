@@ -4,6 +4,9 @@
   "workspaces": {
     "": {
       "name": "tally-extension",
+      "dependencies": {
+        "@twocaretcat/tally-ts": "^2.0.0",
+      },
       "devDependencies": {
         "@wxt-dev/auto-icons": "^1.1.2",
         "sass": "^1.103.1",
@@ -154,6 +157,8 @@
     "@rolldown/pluginutils": ["@rolldown/pluginutils@1.0.1", "", {}, "sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw=="],
 
     "@topcli/prompts": ["@topcli/prompts@4.0.0", "", {}, "sha512-kkKYPb4k/6kRdnESt77B5vJrrYnYHIYczwv0P1c+tfN/IWEx3KZeKEHoUq7sImIyBEXWdA2uakIroD9pmRJziQ=="],
+
+    "@twocaretcat/tally-ts": ["@twocaretcat/tally-ts@2.0.0", "", {}, "sha512-9ynjq7cnSNLGsMeWmjh76AXxBwYoKVfG7o/kPLxo69IMqhmNo83+mS2t4UaA+I/YcfPg00qWfVwWvd5oBo/2kA=="],
 
     "@types/estree": ["@types/estree@1.0.9", "", {}, "sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg=="],
 

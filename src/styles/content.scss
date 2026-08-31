@@ -46,7 +46,7 @@
 	text-shadow: none !important;
 }
 
-.twocaretcat-Tally-modal-open > .twocaretcat-Tally-modal-table > output {
+.twocaretcat-Tally-modal-open > .twocaretcat-Tally-modal-table output {
 	-webkit-user-select: all !important;
 	-moz-user-select: all !important;
 	-ms-user-select: all !important;
@@ -73,21 +73,20 @@
 }
 
 .twocaretcat-Tally-modal-table {
-	display: -ms-grid !important;
-	display: grid !important;
-	-webkit-box-flex: 1 !important;
-					-ms-flex: 1 !important;
-							flex: 1 !important;
-	-ms-grid-columns: auto auto !important;
-	grid-template-columns: auto auto !important;
-	-ms-grid-rows: auto auto auto auto auto auto auto auto !important;
-	grid-template-rows: auto auto auto auto auto auto auto auto !important;
+	display: flex !important;
+	flex-direction: column !important;
+	gap: .2em !important;
 	justify-content: center !important;
-	align-items: center !important;
 	margin: 0 auto 1em auto !important;
 	padding: .2em !important;
 	font-size: 1.7em !important;
 	text-align: left !important;
+}
+
+.twocaretcat-Tally-modal-row {
+	display: flex !important;
+	justify-content: space-between !important;
+	gap: .8em !important;
 }
 
 .twocaretcat-Tally-modal > h2 {
@@ -99,14 +98,14 @@
 	cursor: default !important;
 }
 
-.twocaretcat-Tally-modal-table > h5 {
+.twocaretcat-Tally-modal-row > h5 {
 	margin: 0 .8em 0 0 !important;
 	font-weight: bold !important;
 	font-size: 20px !important;
 	cursor: default !important;
 }
 
-.twocaretcat-Tally-modal-table > output {
+.twocaretcat-Tally-modal-row > output {
 	font-weight: lighter !important;
 	font-size: 20px !important;
 	cursor: pointer !important;

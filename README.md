@@ -47,7 +47,7 @@ If you wish to build the extension yourself:
 
 
 ## 🕹️ Usage
-Select a block of text on any site, right click, and choose `Tally Word Counter: Count` in the context menu. The number of characters, words, sentences, paragraphs, spaces, letters, digits, and special characters will be shown.
+Select a block of text on any site, right click, and choose `Tally Word Counter: Count` in the context menu. The number of characters, words, sentences, paragraphs, lines, spaces, letters, digits, punctuation, and symbols will be shown.
 
 
 ## 🤝 Contributing
