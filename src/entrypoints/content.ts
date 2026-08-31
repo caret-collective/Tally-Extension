@@ -1,39 +1,33 @@
 import { defineContentScript } from 'wxt/utils/define-content-script';
 import { browser } from 'wxt/browser';
+import type { CountResult } from '../types';
 import '../styles/content.scss';
-
-type CountResult = {
-	characters: number;
-	words: number;
-	sentences: number;
-	paragraphs: number;
-	spaces: number;
-	letters: number;
-	digits: number;
-	specialcharacters: number;
-};
 
 const titles = [
 	'Characters:',
 	'Words:',
 	'Sentences:',
 	'Paragraphs:',
+	'Lines:',
 	'Spaces:',
 	'Letters:',
 	'Digits:',
-	'Special Characters:'
-] as const;
+	'Punctuation:',
+	'Symbols:'
+] as const satisfies (`${Capitalize<keyof CountResult>}:`)[];
 
 const ids = [
 	'characters',
 	'words',
 	'sentences',
 	'paragraphs',
+	'lines',
 	'spaces',
 	'letters',
 	'digits',
-	'specialcharacters'
-] as const;
+	'punctuation',
+	'symbols'
+] as const satisfies (keyof CountResult)[];
 
 export default defineContentScript({
 	matches: ['*://*/*'],
@@ -41,25 +35,27 @@ export default defineContentScript({
 		const modal = document.createElement('div');
 		const h2 = document.createElement('h2');
 		const table = document.createElement('div');
-		const h: HTMLHeadingElement[] = [];
-		const o: HTMLOutputElement[] = [];
 		const button = document.createElement('button');
 
-		h2.appendChild(document.createTextNode('Tally Word Counter'));
+		h2.appendChild(document.createTextNode('Tally - Word Counter'));
 		modal.appendChild(h2);
 
 		for (let i = 0; i < ids.length; i++) {
 			const id = ids[i]!;
 			const title = titles[i]!;
+			const row = document.createElement('div');
+			const h = document.createElement('h5');
+			const o = document.createElement('output');
 
-			h.push(document.createElement('h5'));
-			h[i]!.appendChild(document.createTextNode(title));
-			table.appendChild(h[i]!);
+			row.className = 'twocaretcat-Tally-modal-row';
+			h.appendChild(document.createTextNode(title));
+			row.appendChild(h);
 
-			o.push(document.createElement('output'));
-			o[i]!.appendChild(document.createTextNode('-'));
-			o[i]!.setAttribute('id', id);
-			table.appendChild(o[i]!);
+			o.appendChild(document.createTextNode('-'));
+			o.setAttribute('id', id);
+			row.appendChild(o);
+
+			table.appendChild(row);
 		}
 
 		table.className = 'twocaretcat-Tally-modal-table';
