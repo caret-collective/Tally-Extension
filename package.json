@@ -43,13 +43,8 @@
 		"url": "git+https://github.com/caret-collective/Tally-Extension.git"
 	},
 	"scripts": {
-		"build": "bun run clean && bun run build:copy && bun run build:js && bun run build:css && bun run build:zip",
-		"build:copy": "mkdir -p build && cp -R README.md LICENSE src/manifest.json src/assets build/",
-		"build:js": "bun build src/background.ts src/content.ts --outdir build --target browser --format iife",
-		"build:css": "sass src/style.scss build/style.css --style=compressed --no-source-map",
-		"build:zip": "cd build && bestzip tally-word-counter.zip README.md LICENSE manifest.json assets background.js content.js style.css",
-		"clean": "rm -rf build",
-		"typecheck": "tsc --noEmit"
+		"build": "wxt zip",
+		"typecheck": "wxt prepare && tsc --noEmit"
 	},
 	"devDependencies": {
 		"@wxt-dev/auto-icons": "^1.1.2",
