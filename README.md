@@ -1,6 +1,6 @@
 <!-- Project Header -->
 <div align="center">
-  <img class="projectLogo" src="docs/icon_large.png" alt="Project logo" title="Project logo" width="256">
+  <img class="projectLogo" src="src/assets/icon.png" alt="Project logo" title="Project logo" width="256">
 
   <h1 class="projectName">Tally</h1>
 

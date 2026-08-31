@@ -2,7 +2,7 @@
   "$schema": "https://johng.io/schema/project-metadata.json",
   "name": "Tally Extension",
   "background": "A browser extension to easily count the number of words, characters, and paragraphs on any site. This project is designed to be a more convenient alternative to my word counter website of the same name. The project is published on the Chrome Web Store and has over 200 users.",
-	"logoPath": "docs/icon_large.png",
+	"logoPath": "src/assets/icon.png",
 	"category": "Extension",
 	"subcategory": "Browser",
   "schema": {
