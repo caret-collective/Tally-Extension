@@ -36,7 +36,14 @@ Desktop site | &#8291;
 ## 📦 Installation
 The extension can be installed from the Chrome Web Store [here][1].
 
-If you wish to build yourself, run `bun install` and then `bun run build`. The build copies extension files to the `build/` directory, compiles CSS, and creates `build/tally-word-counter.zip`. After running the build, the `build/` directory can be loaded into Chrome.
+### Advanced
+If you wish to build the extension yourself:
+
+1. Install [Bun](https://bun.com/)
+2. Clone the repository
+3. Run `bun install` to install dependencies
+4. Run `bun run build` to build the project
+5. Load the `build/chrome-mv3/` directory or `build/tally-extension-x.x.x-chrome.zip` file into your browser of choice: [Chrome](https://developer.chrome.com/extensions/getstarted#manifest) / [Firefox](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/) / [Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/part1-simple-extension#run-your-extension-locally-in-your-browser-while-developing-it-side-loading) / [Opera](https://dev.opera.com/extensions/testing/)
 
 
 ## 🕹️ Usage
