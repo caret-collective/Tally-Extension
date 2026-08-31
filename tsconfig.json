@@ -1,22 +1,3 @@
 {
-	"compilerOptions": {
-		"allowImportingTsExtensions": true,
-		"lib": [
-			"DOM",
-			"ESNext"
-		],
-		"module": "Preserve",
-		"moduleDetection": "force",
-		"moduleResolution": "bundler",
-		"noEmit": true,
-		"strict": true,
-		"target": "ESNext",
-		"types": [
-			"chrome"
-		],
-		"verbatimModuleSyntax": true
-	},
-	"include": [
-		"src/*.ts"
-	]
+	"extends": "./.wxt/tsconfig.json"
 }
