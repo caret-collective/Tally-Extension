@@ -1,33 +1,9 @@
 import { defineContentScript } from 'wxt/utils/define-content-script';
 import { browser } from 'wxt/browser';
-import type { CountResult } from '../types';
+import { COUNT_RESULT_IDS, type CountResult } from '../constants';
 import '../styles/content.scss';
 
-const titles = [
-	'Characters:',
-	'Words:',
-	'Sentences:',
-	'Paragraphs:',
-	'Lines:',
-	'Spaces:',
-	'Letters:',
-	'Digits:',
-	'Punctuation:',
-	'Symbols:'
-] as const satisfies (`${Capitalize<keyof CountResult>}:`)[];
-
-const ids = [
-	'characters',
-	'words',
-	'sentences',
-	'paragraphs',
-	'lines',
-	'spaces',
-	'letters',
-	'digits',
-	'punctuation',
-	'symbols'
-] as const satisfies (keyof CountResult)[];
+const titles = COUNT_RESULT_IDS.map((id) => `${id.charAt(0).toUpperCase()}${id.slice(1)}:`);
 
 export default defineContentScript({
 	matches: ['*://*/*'],
@@ -42,8 +18,8 @@ export default defineContentScript({
 		h2.appendChild(document.createTextNode('Tally - Word Counter'));
 		modal.appendChild(h2);
 
-		for (let i = 0; i < ids.length; i++) {
-			const id = ids[i]!;
+		for (let i = 0; i < COUNT_RESULT_IDS.length; i++) {
+			const id = COUNT_RESULT_IDS[i]!;
 			const title = titles[i]!;
 			const row = document.createElement('div');
 			const h = document.createElement('h5');
@@ -76,7 +52,7 @@ export default defineContentScript({
 		browser.runtime.onMessage.addListener(function(request: CountResult) {
 			modal.classList.add(modalOpenClass);
 
-			for (const id of ids) {
+			for (const id of COUNT_RESULT_IDS) {
 				document.getElementById(id)!.textContent = String(request[id]);
 			}
 		});

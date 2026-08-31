@@ -1,7 +1,7 @@
 import { Tally } from '@twocaretcat/tally-ts';
 import { defineBackground } from 'wxt/utils/define-background';
 import { browser, type Browser } from 'wxt/browser';
-import type { CountResult } from '../types';
+import type { CountResult } from '../constants';
 
 const tally = new Tally({locales: browser.i18n.getUILanguage()});
 
