@@ -51,5 +51,8 @@
 		"sass": "^1.103.1",
 		"typescript": "^7.0.2",
 		"wxt": "^0.21.4"
+	},
+	"dependencies": {
+		"@twocaretcat/tally-ts": "^2.0.0"
 	}
 }
