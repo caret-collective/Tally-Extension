@@ -1,3 +1,6 @@
+import { defineBackground } from 'wxt/utils/define-background';
+import { browser, type Browser } from 'wxt/browser';
+
 type CountResult = {
 	characters: number;
 	words: number;
@@ -9,7 +12,7 @@ type CountResult = {
 	specialcharacters: number;
 };
 
-function count(info: chrome.contextMenus.OnClickData): void {
+async function count(info: Browser.contextMenus.OnClickData, tab: Browser.tabs.Tab | undefined): Promise<void> {
 	const text = info.selectionText!;
 	const len = text.length;
 
@@ -99,27 +102,25 @@ function count(info: chrome.contextMenus.OnClickData): void {
 		count.paragraphs++;
 	}
 
-	chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-		const tabId = tabs[0]?.id;
+	if (tab?.id === undefined) {
+		return;
+	}
 
-		if (tabId === undefined) {
-			return;
-		}
-
-		chrome.tabs.sendMessage(tabId, count);
-	});
+	await browser.tabs.sendMessage(tab.id, count).catch(() => undefined);
 }
 
-chrome.runtime.onInstalled.addListener(() => {
-	chrome.contextMenus.create({
-		id: 'twocaretcat-Tally-count',
-		title: 'Tally Word Counter: Count',
-		contexts: ['selection']
+export default defineBackground(() => {
+	browser.runtime.onInstalled.addListener(() => {
+		browser.contextMenus.create({
+			id: 'twocaretcat-Tally-count',
+			title: 'Tally Word Counter: Count',
+			contexts: ['selection']
+		});
 	});
-});
 
-chrome.contextMenus.onClicked.addListener((info) => {
-	if (info.menuItemId == 'twocaretcat-Tally-count') {
-		count(info);
-	}
+	browser.contextMenus.onClicked.addListener((info, tab) => {
+		if (info.menuItemId == 'twocaretcat-Tally-count') {
+			void count(info, tab);
+		}
+	});
 });
