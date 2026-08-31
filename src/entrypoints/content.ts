@@ -32,6 +32,8 @@ const ids = [
 export default defineContentScript({
 	matches: ['*://*/*'],
 	main() {
+		const MODAL_ID = 'twocaretcat-Tally-modal' as const;
+
 		const modal = document.createElement('div');
 		const h2 = document.createElement('h2');
 		const table = document.createElement('div');
@@ -47,7 +49,7 @@ export default defineContentScript({
 			const h = document.createElement('h5');
 			const o = document.createElement('output');
 
-			row.className = 'twocaretcat-Tally-modal-row';
+			row.className = [MODAL_ID, 'row'].join('-');
 			h.appendChild(document.createTextNode(title));
 			row.appendChild(h);
 
@@ -58,19 +60,21 @@ export default defineContentScript({
 			table.appendChild(row);
 		}
 
-		table.className = 'twocaretcat-Tally-modal-table';
+		const modalOpenClass = [MODAL_ID, 'open'].join('-');
+
+		table.className = [MODAL_ID, 'table'].join('-');
 		modal.appendChild(table);
 
 		button.appendChild(document.createTextNode('CLOSE'));
-		button.addEventListener('click', () => modal.classList.remove('twocaretcat-Tally-modal-open'));
+		button.addEventListener('click', () => modal.classList.remove(modalOpenClass));
 
 		modal.appendChild(button);
 
-		modal.className = 'twocaretcat-Tally-modal';
+		modal.className = MODAL_ID;
 		document.body.appendChild(modal);
 
 		browser.runtime.onMessage.addListener(function(request: CountResult) {
-			modal.classList.add('twocaretcat-Tally-modal-open');
+			modal.classList.add(modalOpenClass);
 
 			for (const id of ids) {
 				document.getElementById(id)!.textContent = String(request[id]);
